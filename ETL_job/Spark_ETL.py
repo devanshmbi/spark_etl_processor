@@ -14,27 +14,34 @@ import pandas as pd
 """ Creating spark session """
 spark = SparkSession.builder.appName('spark_etl').getOrCreate()
 
-""" defining main function, it will take the path, parse it and check whether the file is ending with 
+""" defining main function, it will take the path from the arguments given during run time, parse it and check whether the file is ending with 
  .csv/.parquet/.json for now and will apply the functions accordingly"""
 def main():
 
 	path = str(sys.argv[1])
-	if path[-3:] == 'csv':
+	""" Checking the file format whether it is csv.json,parquet by parsing the path """
+	if path.split('/')[-1].split('.')[-1] == 'csv':
+		""" If the path is csv use the csv_parser function to read the file and convert it to dataframe """
 		df = csv_parser(path)
 		df.show(4)
 		print("Writing successfully to desired location")
+		""" write the dataframe into desired output directory using dataframe_writer function"""
 		dataframe_writer(df)
 		print("Completed writing to desired location")
-	elif path[-3:] == 'json':
+	elif path.split('/')[-1].split('.')[-1] == 'json':
+		""" If the path is json use the json_parser function to read the file and convert it to dataframe """
 		df = json_parser(path)
 		df.show(4)
 		print("Writing successfully to desired location")
+		""" write the dataframe into desired output directory using dataframe_writer function"""
 		dataframe_writer(df)
 		print("Completed writing to desired location")
-	elif path[-3:] == 'parquet':
+	elif path.split('/')[-1].split('.')[-1] == 'parquet':
+		""" If the path is parquet use the parquet_parser function to read the file and convert it to dataframe """
 		df = parquet_parser(path)
 		df.show(4)
 		print("Writing successfully to desired location")
+		""" write the dataframe into desired output directory using dataframe_writer function"""
 		dataframe_writer(df)
 		print("Completed writing to desired location")
 
