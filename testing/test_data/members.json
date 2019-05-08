@@ -1,0 +1,4 @@
+[{"mem_name":"Maye", "mem_age":21,"mem_city":"New York","mem_state":"NY" },
+{"mem_name":"Max", "mem_age":35, "mem_city":"Philadelphia","mem_state":"PA" },
+{"mem_name":"John", "mem_age":32, "mem_city":"Hartford","mem_state":"CT" },
+{"mem_name":"John", "mem_age":30, "mem_city":"Boston", "mem_state":"MA" }]
