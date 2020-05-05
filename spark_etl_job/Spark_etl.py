@@ -12,7 +12,9 @@ import numpy as np
 import pandas as pd
 
 """ Creating spark session """
+#spark = SparkSession.builder.appName("HL7 Parser").enableHiveSupport().getOrCreate()
 spark = SparkSession.builder.appName('spark_etl').getOrCreate()
+
 
 """ defining main function, it will take the path from the arguments given during run time, parse it and check whether the file is ending with 
  .csv/.parquet/.json for now and will apply the functions accordingly"""
